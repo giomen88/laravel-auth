@@ -28,7 +28,7 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
 
 });
 
-// GUESTS
+// GUEST
 
 Route::get('/{any?}', function () {
     return view('guest.home');

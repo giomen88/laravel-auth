@@ -5,7 +5,6 @@
         <h1>WORK IN PROGRESS</h1>
         <!-- <div class="card" v-for="post in posts" :key="post.id">
           <h2>{{ post.title }}</h2>
-          <span> {{ post.slug }} </span>
           <img :src="post.image" :alt="post['title']" />
           <p>{{ post.content }}</p>
         </div> -->
