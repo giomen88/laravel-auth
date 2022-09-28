@@ -5,15 +5,15 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-            <h1>MODIFICA IL POST</h1>
+            <h1>MODIFICA POST</h1>
             <form action=" {{route('admin.posts.update', $post)}} " method="POST">
             @csrf
             @method('PUT')
-            @include('includes.form')
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Modifica</button>
-            </div>
-        
+            @include('includes.admin.form')
+            <div class="form-group d-flex justify-content-between mt-5">
+                <button type="submit" class="btn btn-success">Salva</button>
+                <a href=" {{route('admin.posts.index')}} " class="btn btn-primary"><i class="fa-solid fa-rotate-left mr-2"></i>Torna alla lista</a> 
+            </div>    
             </form>
         </div>
     </div>

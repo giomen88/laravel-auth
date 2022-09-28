@@ -9240,3 +9240,15 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.post.card {
+  margin: 10px;
+  width: calc(20% - 20px);
+}
+
+.url-input {
+  width: 78%;
+}
+
+#preview {
+  width: 20%;
+}

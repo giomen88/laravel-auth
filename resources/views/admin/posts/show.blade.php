@@ -4,27 +4,30 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-            <div class="card mb-3">
-                <img src="{{$post['image']}}" class="card-img-top" alt="{{$post['title']}}">
-                <div class="card-body">
-                    <h5 class="card-title">{{$post['title']}}</h5>
-                    <p class="card-text">{{$post['content']}}</p>
-                    <p class="card-text"><small class="text-muted"><strong>Ultima modifica</strong>  {{$post['updated_at']}}</small></p>
-                    <div class="buttons d-flex justify-content-between">
-                        <div class="d-flex">
-                            <a href=" {{route('admin.posts.edit', $post)}} " class="btn btn-secondary mr-2">Modifica</a>
-                            <form action=" {{route('admin.posts.destroy', $post)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Cancella</button>
-                            </form>
-                        </div>
-                        <div>
-                            <a href=" {{route('admin.posts.index')}} " class="btn btn-primary">Torna alla lista</a> 
-                        </div>
-
-                    </div>
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{$post['image']}}" class="img-fluid" alt="{{$post['title']}}">
                 </div>
+                <div class="col-8">
+                    @if($post->category) <span class="badge bg-{{ $post->category->color }} mb-3">{{$post->category->label}}</span> @endif
+                    <h5>{{$post['title']}}</h5>
+                    <p>{{$post['content']}}</p>
+                    <p><small class="text-muted"><strong>Ultima modifica</strong>  {{$post['updated_at']}}</small></p>
+                </div>
+            </div>
+            <div class="col-12 buttons d-flex justify-content-between mt-4 p-0">
+                <div class="d-flex">
+                    <a href=" {{route('admin.posts.edit', $post)}} " class="btn btn-warning mr-2"><i class="fa-solid fa-pen mr-2"></i> Modifica</a>
+                    <form action=" {{route('admin.posts.destroy', $post)}}" method="POST">
+                     @csrf
+                    @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can mr-2"></i> Cancella</button>
+                    </form>
+                </div>
+                <div>
+                <a href=" {{route('admin.posts.index')}} " class="btn btn-primary"><i class="fa-solid fa-rotate-left mr-2"></i>Torna alla lista</a> 
+                </div>
+
             </div>
         </div>
     </div>

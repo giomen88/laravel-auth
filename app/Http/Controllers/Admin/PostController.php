@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -31,7 +32,9 @@ class PostController extends Controller
     {
         $post = new Post();
 
-        return view('admin.posts.create', compact('post'));
+        $categories = Category::all();
+
+        return view('admin.posts.create', compact('post', 'categories'));
     }
 
     /**
@@ -43,7 +46,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|min:5|max:50|unique:posts',
+            'title' => 'required|string|min:3|max:50|unique:posts',
             'content' => 'required|string',
             'image' => 'nullable|url'
         ], [
@@ -90,7 +93,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -103,7 +108,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title' => 'required|string|min:5|max:50|unique:posts',
+            'title' => ['required','string','min:3', 'max:50', Rule::unique('posts')->ignore($post->id)],
             'content' => 'required|string',
             'image' => 'nullable|url'
         ], [
