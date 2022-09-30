@@ -13,9 +13,9 @@
         <div class="col-12 d-flex flex-wrap p-0">
             @foreach($posts as $post)
             <div class="post card p-2 d-flex flex-column justify-content-between">
-                <h5 class="card-title">{{$post->title}}</h5>
+                <h4 class="card-title">{{$post->title}}</h4>
                 <div class="d-flex justify-content-between">
-                    <h6>Autore</h6>
+                    <h6>Autore: {{$post->user_id}}</h6>
                     @if($post->category) <span class="badge bg-{{ $post->category->color }} align-self-center">{{$post->category->label}}</span> @endif
                 </div>
                     <img src="{{$post->image}}" class="img-fluid" alt="{{$post->title}}">

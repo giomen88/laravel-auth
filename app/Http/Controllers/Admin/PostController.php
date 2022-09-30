@@ -8,6 +8,7 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use App\Models\Category;
+use App\User;
 
 class PostController extends Controller
 {
@@ -20,7 +21,9 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('admin.posts.index', compact('posts'));
+        $users = User::all();
+
+        return view('admin.posts.index', compact('posts', 'users'));
     }
 
     /**
@@ -81,8 +84,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $users = User::all();
 
-        return view('admin.posts.show', compact('post'));
+        return view('admin.posts.show', compact('post', 'users'));
     }
 
     /**
