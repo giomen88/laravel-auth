@@ -13,13 +13,13 @@ class TagSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $tags = ['FrontEnd', 'BackEnd', 'UI/UX', 'FullStack', 'DevOps'];
+        $labels = ['FrontEnd', 'BackEnd', 'UI/UX', 'FullStack', 'DevOps'];
 
         foreach($labels as $label) 
         {
             $tag = new Tag();
             $tag->label = $label;        
-            $tag->color = hexColor();
+            $tag->color = $faker->hexColor();
             $tag->save();        
         }
     }

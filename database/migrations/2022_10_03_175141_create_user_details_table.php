@@ -18,7 +18,7 @@ class CreateUserDetailsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('first_name')->nullable();            
             $table->string('last_name')->nullable();
-            $table->string('phone', 15)->nullable();
+            $table->string('phone', 20)->nullable();
             $table->string('address')->nullable();
             $table->year('birthyear')->nullable();
             $table->timestamps();
